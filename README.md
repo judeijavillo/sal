@@ -45,7 +45,12 @@ from the top-level directory run the `Makefile` command `make run-website`.
 
 ### Benchmark
 
-### Tests
+### AWS
+
+SAL is hosted on an AWS EC2 Instance. To connect to the development instance,
+simply ssh into the cloud computer using the appropriate IP address as specified
+by the admin AWS account. Alternatively, assuming that the correct address is
+up-to-date in the `Makefile`, run `make run-aws`.
 
 ## Acknowledgements
 

@@ -6,7 +6,7 @@
 from flask import Blueprint, request
 
 # Create a Blueprint to connect all of the subroutes to
-users = Blueprint('users', __name__, url_prefix='/users')
+users = Blueprint("users", __name__, url_prefix="/users")
 
 # ROUTES ***********************************************************************
 

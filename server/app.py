@@ -4,6 +4,8 @@
 # Version: 4 May 2022
 
 from flask import Flask, request
+from flask_cors import CORS
+
 from routes.courses import courses
 from routes.entries import entries
 from routes.posts import posts
@@ -11,9 +13,12 @@ from routes.queues import queues
 from routes.schools import schools
 from routes.users import users
 
+from constants import *
+
 # CONFIGURATION ****************************************************************
 
 app = Flask(__name__)
+CORS(app)
 
 app.register_blueprint(courses)
 app.register_blueprint(entries)
@@ -41,6 +46,5 @@ def check_app():
         result["message"] = "DELETE: app endpoint successful"
     return result
 
-if __name__ == '__main__':
-    # TODO: Read from a json for this
-    app.run(host='localhost', port='5000', debug=True)
+if __name__ == "__main__":
+    app.run(host=HOST, port=PORT, debug=True)

@@ -6,3 +6,6 @@
 
 # System
 **.DS_Store
+
+# Admin
+**.pem
