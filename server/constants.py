@@ -7,7 +7,13 @@
 DEVELOPER_MODE = True
 
 # The address of the host of the server
-HOST = "127.0.0.1" if DEVELOPER_MODE else "HOST"
+HOST = "127.0.0.1" if DEVELOPER_MODE else "3.138.173.189"
 
 # The port of the host of the server
-PORT = "5000" if DEVELOPER_MODE else "PORT"
+PORT = "8000"
+
+# The address of the host of the database
+DB_HOST = "127.0.0.1" if DEVELOPER_MODE else "3.138.173.189"
+
+# The port of the host of the database
+DB_PORT = 7000

@@ -4,8 +4,12 @@
 # Python
 **/__pycache__
 
+# MongoDB
+database/*
+
 # System
 **.DS_Store
+**.vscode/
 
 # Admin
 **.pem

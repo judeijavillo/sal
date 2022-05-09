@@ -7,7 +7,7 @@
 const DEVELOPER_MODE = true
 
 // The address of the host of the server
-export const HOST = DEVELOPER_MODE ? "127.0.0.1" : "HOST"
+export const HOST = DEVELOPER_MODE ? "127.0.0.1" : "3.138.173.189"
 
 // The port of the host of the server
-export const PORT = DEVELOPER_MODE ? "5000" : "PORT"
+export const PORT = "8000"

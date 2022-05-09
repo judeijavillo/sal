@@ -17,6 +17,9 @@ download all of the necessary requirements for Python, simply run
 all be encapsulated within the website's package dependencies, so navigate to 
 the `website` directory and run `npm install`.
 
+The database for SAL is MondoDB. SAL was developed using 5.0.6, so be sure to be
+using at least MongoDB Community Server version 5.0.6.
+
 ## Development
 
 Developing the different modules of SAL are relatively independent, thus come
@@ -30,7 +33,7 @@ The server for SAL is written in Python, contained within the `server`
 directory. It uses Flask to simplify routing and increase development speed.
 To run it, navigate to the `server` directory and execute the command 
 `flask run`. Alternatively, from the top-level directory run the `Makefile`
-command: `make run-server`.
+command: `make run-server`. The server runs on port `8000`.
 
 ### Website
 
@@ -38,10 +41,17 @@ The website for SAL is written in JavaScript, contained within the `website`
 directory. It uses React to simplify component creation. To run it, navigate to
 the `website` directory and execute the command `npm run start`. Alternatively,
 from the top-level directory run the `Makefile` command `make run-website`.
+The website runs on port `9000`.
 
 ### Mobile
 
 ### Database
+
+The database for SAL uses MongoDB and uses the `database` directory as its 
+database path. To run it, navigate to the `database` directory and run 
+`mongod --dbpath . --port 7000`. Alternatively, from the top-level directory
+run the `Makefile` command `make run-database`. The database runs on port 
+`7000`.
 
 ### Benchmark
 
