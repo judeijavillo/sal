@@ -10,7 +10,7 @@ schools = Blueprint("schools", __name__, url_prefix="/schools")
 
 # ROUTES ***********************************************************************
 
-@schools.route("/", methods=["GET", "POST", "PATCH", "DELETE"])
+@schools.route("/test", methods=["GET", "POST", "PATCH", "DELETE"])
 def check_schools():
     """
     A sanity check endpoint to ensure that the server works correctly for 

@@ -10,7 +10,7 @@ queues = Blueprint("queues", __name__, url_prefix="/queues")
 
 # ROUTES ***********************************************************************
 
-@queues.route("/", methods=["GET", "POST", "PATCH", "DELETE"])
+@queues.route("/test", methods=["GET", "POST", "PATCH", "DELETE"])
 def check_queues():
     """
     A sanity check endpoint to ensure that the server works correctly for 

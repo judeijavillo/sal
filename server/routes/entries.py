@@ -10,7 +10,7 @@ entries = Blueprint("entries", __name__, url_prefix="/entries")
 
 # ROUTES ***********************************************************************
 
-@entries.route("/", methods=["GET", "POST", "PATCH", "DELETE"])
+@entries.route("/test", methods=["GET", "POST", "PATCH", "DELETE"])
 def check_entries():
     """
     A sanity check endpoint to ensure that the server works correctly for 

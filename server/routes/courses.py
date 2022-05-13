@@ -10,7 +10,7 @@ courses = Blueprint("courses", __name__, url_prefix="/courses")
 
 # ROUTES ***********************************************************************
 
-@courses.route("/", methods=["GET", "POST", "PATCH", "DELETE"])
+@courses.route("/test", methods=["GET", "POST", "PATCH", "DELETE"])
 def check_courses():
     """
     A sanity check endpoint to ensure that the server works correctly for 

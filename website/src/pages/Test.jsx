@@ -33,7 +33,7 @@ export default function Test() {
   const methods = ["GET", "POST", "PATCH", "DELETE"]
   const endpoints = ["courses", "entries", "posts", "queues", "schools", "users"]
   endpoints.forEach(endpoint => {
-    const requests = methods.map(method => makeRequest(method, endpoint + "/"))
+    const requests = methods.map(method => makeRequest(method, endpoint + "/test"))
     checkEndpoint(endpoint, requests)
   })
 

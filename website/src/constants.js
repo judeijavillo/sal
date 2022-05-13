@@ -14,6 +14,9 @@ export const HOST = DEVELOPER_MODE ? "127.0.0.1" : "3.138.173.189"
 // The port of the host of the server
 export const PORT = "8000"
 
+// The test school to use for demo purposes
+export const CORNELL = "Cornell_University"
+
 // COLORS **********************************************************************
 
 // The signature SAL blue
@@ -78,6 +81,6 @@ export const CENTER_HORTIZONTAL = {
 export const ROUNDED_CONTAINER = {
   border: `2px solid ${GRAY}`,
   borderRadius: "25px",
-  padding: "50px",
+  padding: "25px",
   width: "40%"
 }

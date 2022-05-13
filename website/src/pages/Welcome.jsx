@@ -4,9 +4,8 @@
 // Version: 9 May 2022
 
 import React from "react"
-import {
-  Button
-} from "@mui/material"
+import { useNavigate } from "react-router-dom"
+import { Button } from "@mui/material"
 import {
   CENTER_CONTENT,
   CENTER_HORTIZONTAL,
@@ -14,6 +13,11 @@ import {
 } from "../constants"
 
 export default function Welcome() {
+  
+  // ATTRIBUTES ****************************************************************
+
+  // The navigator to route between pages
+  const navigate = useNavigate()
 
   // HELPERS *******************************************************************
 
@@ -21,7 +25,7 @@ export default function Welcome() {
    * A callback function for when the user presses the "Sign Up" button
    */ 
   function signup() { 
-    console.log("Sign up!") 
+    navigate("/signup")
   }
 
   /**

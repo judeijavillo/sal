@@ -19,16 +19,19 @@ def get(database, school, filter = {}, one = False, objectId = ""):
   database and school
   """
   collection = client[database][school]
-  if one:
-    result = collection.find_one({ "_id": ObjectId(objectId) })
-    result["_id"] = str(result["_id"])
-  else:
-    cursor = collection.find(filter)
-    result = []
-    for element in cursor:
-      element["_id"] = str(element["_id"])
-      result.append(element)
-  return result
+  try:
+    if one:
+      result = collection.find_one({ "_id": ObjectId(objectId) })
+      result["_id"] = str(result["_id"])
+    else:
+      cursor = collection.find(filter)
+      result = []
+      for element in cursor:
+        element["_id"] = str(element["_id"])
+        result.append(element)
+    return result
+  except:
+    return None
 
 
 def post(database, school, body, one = True):

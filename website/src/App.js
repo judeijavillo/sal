@@ -3,26 +3,19 @@
 // Authors: Jude Javillo and Ronin Sharma
 // Version: 4 May 2022
 
-import React, {
-  useState
-} from "react"
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom"
+import React, { useState } from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { FILL_PARENT, FILL_WHITE, FILL_GRADIENT } from "./constants"
 import Test from "./pages/Test"
+import Signup from "./pages/Signup"
 import Welcome from "./pages/Welcome"
-
-// COMPONENT *******************************************************************
 
 function App() {
 
   // ATTRIBUTES ****************************************************************
 
-  // Whether or not the user is authenticated
-  const [authenticated, setAuthenticated] = useState(false);
+  // The logged in User of the application
+  const [auth, setAuth] = useState("")
 
   // STYLES ********************************************************************
 
@@ -37,36 +30,36 @@ function App() {
     ...FILL_PARENT,
     ...FILL_GRADIENT
   }
-
   // The background style for the application
-  const backgroundStyle = authenticated 
-    ? authenticatedStyle 
-    : unauthenticatedStyle
+  const backgroundStyle = auth === "" 
+    ? unauthenticatedStyle
+    : authenticatedStyle 
 
   // COMPONENT *****************************************************************
 
+  // The user is not authenticated, return authentication pages
+  if (auth === "") {
+    return (
+      <div style={backgroundStyle}>
+        <Router>
+          <Routes>
+            <Route path="/signup" element={<Signup setAuth={setAuth} />}/>
+            <Route path="/" element={<Welcome/>}/>
+          </Routes>
+        </Router>
+      </div>   
+    )
+  }
+  
   // The user is authenticated, return main pages
-  if (authenticated) {
+  else {
     return (
       <Router>
         <Routes>
           <Route path="/" element={<Test/>}/>
         </Routes>
       </Router>
-    )
-  }
-  
-  // The user is not authenticated, return authentication pages
-  else {
-    return (
-      <div style={backgroundStyle}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Welcome/>}/>
-          </Routes>
-        </Router>
-      </div>   
-    )
+    ) 
   }
   
 }

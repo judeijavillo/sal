@@ -10,7 +10,7 @@ posts = Blueprint("posts", __name__, url_prefix="/posts")
 
 # ROUTES ***********************************************************************
 
-@posts.route("/", methods=["GET", "POST", "PATCH", "DELETE"])
+@posts.route("/test", methods=["GET", "POST", "PATCH", "DELETE"])
 def check_posts():
     """
     A sanity check endpoint to ensure that the server works correctly for 

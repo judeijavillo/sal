@@ -4,13 +4,15 @@
 # Version: 4 May 2022
 
 from flask import Blueprint, request
+import utils.database as db
+import bcrypt
 
 # Create a Blueprint to connect all of the subroutes to
 users = Blueprint("users", __name__, url_prefix="/users")
 
 # ROUTES ***********************************************************************
 
-@users.route("/", methods=["GET", "POST", "PATCH", "DELETE"])
+@users.route("/test", methods=["GET", "POST", "PATCH", "DELETE"])
 def check_users():
     """
     A sanity check endpoint to ensure that the server works correctly for 
@@ -26,5 +28,56 @@ def check_users():
     elif request.method == "DELETE":
         result["message"] = "DELETE: users endpoint successful"
     return result
+
+
+@users.route("/", methods=[])
+def getUser():
+    """
+    An endpoint that returns the User with the provided id
+    """
+    args = request.args
+    school = args.get("school", default="", type=str)
+    _id = args.get("id", default="", type=str)
+    user = db.get("Users", school, one = True, objectId = _id)
+    successful =  user is not None
+    response = {
+        "successful": successful,
+        "user": user
+    }
+    return response
+
+
+@users.route("/email", methods=["GET"])
+def check_email():
+    """
+    An endpoint to check if the user's email is taken
+    """
+    args = request.args
+    school = args.get("school", default="", type=str)
+    email = args.get("email", default="", type=str)
+    result = db.get("Users", school, filter = { "email": email })
+    return { "result": len(result) == 0 }
+
+
+@users.route("/signup", methods=["POST"])
+def signup_user():
+    """
+    Creates an entry for the User and return the User's id if successful
+    """
+    # Process the body arguments
+    body = request.json
+    if body["password"] == "":
+        body.pop("password")
+        body["auth"] = "Google"
+    else:    
+        body["password"] = bcrypt.hashpw(body["password"].encode("utf-8"), bcrypt.gensalt())
+        body["auth"] = "SAL"
+
+    # Process the header arguments
+    args = request.args
+    school = args.get("school", default="", type=str)
+    result = db.post("Users", school, body)
+    return { "_id": str(result.inserted_id) }
+
 
 # HELPERS **********************************************************************
