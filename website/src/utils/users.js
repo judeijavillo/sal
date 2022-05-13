@@ -29,3 +29,15 @@ export async function signupUser(school, email, first, last, password) {
   .then(res => res.json())
   .then(res => String(res["_id"]) )
 }
+
+/**
+ * Returns a Promise of the ID of a User iff signup is successful
+ */ 
+export async function loginUser(school, email, password) {
+  return makeRequest("POST", `users/login?school=${school}`, {
+    "email": email,
+    "password": password
+  })
+  .then(res => res.json())
+  .then(res => String(res["_id"]) )
+}

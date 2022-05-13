@@ -7,6 +7,7 @@ import React, { useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { FILL_PARENT, FILL_WHITE, FILL_GRADIENT } from "./constants"
 import Test from "./pages/Test"
+import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Welcome from "./pages/Welcome"
 
@@ -44,6 +45,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/signup" element={<Signup setAuth={setAuth} />}/>
+            <Route path="/login" element={<Login setAuth={setAuth} />}/>
             <Route path="/" element={<Welcome/>}/>
           </Routes>
         </Router>

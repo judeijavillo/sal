@@ -32,7 +32,7 @@ export default function Welcome() {
    * A callback function for when the user presses the "Login" button
    */ 
   function login() { 
-    console.log("Login!") 
+    navigate("/login")
   }
 
   // STYLES ********************************************************************

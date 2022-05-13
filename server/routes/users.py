@@ -76,8 +76,47 @@ def signup_user():
     # Process the header arguments
     args = request.args
     school = args.get("school", default="", type=str)
+
+    # Execute the request
     result = db.post("Users", school, body)
     return { "_id": str(result.inserted_id) }
 
+
+@users.route("/login", methods=["POST"])
+def login_user():
+    """
+    Returns the user's ID if the email/password combination is valid
+    """
+    body = request.json
+    args = request.args
+    school = args.get("school", default="", type=str)
+    result = db.get("Users", school, { "email": body["email"] })
+    failed = { "message": "Authentication failed", "_id": "" }
+
+    # No users found
+    if len(result) == 0:
+        return failed
+
+    # User found, login with SAL
+    elif body["password"] != "":
+        success = bcrypt.checkpw(body["password"].encode("utf-8"), result[0]["password"])
+        if success:
+            return { 
+                "message": "Authentication successful",
+                "_id": str(result[0]["_id"])
+            }
+        else:
+            return failed
+    
+    # User found, login with Google
+    else:
+        success = result[0]["auth"] == "Google"
+        if success:
+            return { 
+                "message": "Authentication successful",
+                "_id": str(result[0]["_id"])
+            }
+        else:
+            return failed
 
 # HELPERS **********************************************************************

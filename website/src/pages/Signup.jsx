@@ -27,6 +27,8 @@ const EMAIL_BAD = "An account with this email already exists"
 const PASSWORD_BAD = "Password must be at least 8 characters long"
 // The feedback text for when the confirm is bad
 const CONFIRM_BAD = "Password and Confirm Password fields do not match"
+// The feedback text for when the account associated with Google auth exists
+const GOOGLE_BAD = "An account is already associated with this Google profile"
 
 export default function Signup({
   setAuth
@@ -144,9 +146,19 @@ export default function Signup({
     const name = result.user.displayName
     const first = name.substring(0, name.indexOf(" "))
     const last = name.substring(name.indexOf(" ") + 1)
-    const id = await signupUser(CORNELL, first, last, email, "")
-    setAuth(id)
-    navigate("/")
+    const emailGood = await checkEmail(CORNELL, email)
+
+    // If the email is taken
+    if (!emailGood) {
+      setFeedback(GOOGLE_BAD)
+    } 
+
+    // If the email is not yet taken
+    else {
+      const id = await signupUser(CORNELL, email, first, last, "")
+      setAuth(id)
+      navigate("/")
+    }
   }
 
   // STYLES ********************************************************************
