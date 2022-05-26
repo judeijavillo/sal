@@ -14,7 +14,7 @@ import {
   CENTER_HORTIZONTAL,
   ROUNDED_CONTAINER,
   FILL_WHITE,
-  CORNELL
+  SCHOOL
 } from "../constants"
 
 // CONSTANTS *******************************************************************
@@ -68,7 +68,7 @@ export default function Signup({
    * Returns a Promise of true iff the email is not taken
    */
   async function validateEmail() {
-    return checkEmail(CORNELL, email)
+    return checkEmail(SCHOOL, email)
   }
 
   /**
@@ -131,7 +131,7 @@ export default function Signup({
 
     // Else, everything checks out and the user is signed up
     else {
-      const id = await signupUser(CORNELL, email, first, last, password)
+      const id = await signupUser(SCHOOL, email, first, last, password)
       setAuth(id)
       navigate("/")
     }
@@ -146,7 +146,7 @@ export default function Signup({
     const name = result.user.displayName
     const first = name.substring(0, name.indexOf(" "))
     const last = name.substring(name.indexOf(" ") + 1)
-    const emailGood = await checkEmail(CORNELL, email)
+    const emailGood = await checkEmail(SCHOOL, email)
 
     // If the email is taken
     if (!emailGood) {
@@ -155,7 +155,7 @@ export default function Signup({
 
     // If the email is not yet taken
     else {
-      const id = await signupUser(CORNELL, email, first, last, "")
+      const id = await signupUser(SCHOOL, email, first, last, "")
       setAuth(id)
       navigate("/")
     }

@@ -14,7 +14,7 @@ import {
   CENTER_HORTIZONTAL, 
   ROUNDED_CONTAINER,
   FILL_WHITE,
-  CORNELL
+  SCHOOL
 } from "../constants";
 
 // CONSTANTS *******************************************************************
@@ -57,7 +57,7 @@ export default function Login({
     if (email === "" || password === "") {
       setFeedback(FIELDS_BAD)
     } else {
-      const id = await loginUser(CORNELL, email, password)
+      const id = await loginUser(SCHOOL, email, password)
       if (id === "") {
         setFeedback(COMBO_BAD)
       } else {
@@ -80,7 +80,7 @@ export default function Login({
   async function goGoogle() {
     const result = await signInWithGoogle()
     const email = result.user.email
-    const id = await loginUser(CORNELL, email, "")
+    const id = await loginUser(SCHOOL, email, "")
     console.log(result)
     console.log(id)
     if (id === "") {

@@ -8,6 +8,15 @@ import {
 } from "./api"
 
 /**
+ * Returns a Promise of a User iff the id is valid
+ */ 
+export async function getUser(school, id) {
+  return makeRequest("GET", `users/?school=${school}&id=${id}`)
+  .then(res => res.json())
+  .then(res => (res["successful"]) ? res["user"] : undefined )
+}
+
+/**
  * Returns a Promise of true iff the email is not taken in the school
  */ 
 export async function checkEmail(school, email) {

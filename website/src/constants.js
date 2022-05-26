@@ -15,7 +15,7 @@ export const HOST = DEVELOPER_MODE ? "127.0.0.1" : "3.138.173.189"
 export const PORT = "8000"
 
 // The test school to use for demo purposes
-export const CORNELL = "Cornell_University"
+export const SCHOOL = "Cornell_University"
 
 // COLORS **********************************************************************
 
@@ -32,6 +32,12 @@ export const WHITE = "#FFFFFF"
 export const GRAY = "#BBBBBB"
 
 // STYLES **********************************************************************
+
+// The height of the navigation bar
+export const NAVBAR_HEIGHT = 75
+
+// The width of the selection border
+export const SELECTION_BORDER_WIDTH = 2
 
 // A style to fill the background to be purple
 export const FILL_PURPLE = {

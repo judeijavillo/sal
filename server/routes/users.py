@@ -30,8 +30,8 @@ def check_users():
     return result
 
 
-@users.route("/", methods=[])
-def getUser():
+@users.route("/", methods=["GET"])
+def get_user():
     """
     An endpoint that returns the User with the provided id
     """
@@ -39,6 +39,8 @@ def getUser():
     school = args.get("school", default="", type=str)
     _id = args.get("id", default="", type=str)
     user = db.get("Users", school, one = True, objectId = _id)
+    if user is not None:
+        user.pop("password")
     successful =  user is not None
     response = {
         "successful": successful,
