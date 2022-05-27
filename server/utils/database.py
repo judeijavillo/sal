@@ -13,7 +13,7 @@ client = MongoClient(host = DB_HOST, port = DB_PORT)
 
 # FUNCTIONS ********************************************************************
 
-def get(database, school, filter = {}, one = False, objectId = ""):
+def get(database, school, filter = {}, one = False, objectId = "", sort=False):
   """
   Returns a list of objects in the corresponding collection denoted by the
   database and school
@@ -24,7 +24,10 @@ def get(database, school, filter = {}, one = False, objectId = ""):
       result = collection.find_one({ "_id": ObjectId(objectId) })
       result["_id"] = str(result["_id"])
     else:
-      cursor = collection.find(filter)
+      if not sort:
+        cursor = collection.find(filter)
+      else:
+        cursor = collection.find(filter).sort("timestamp", -1)
       result = []
       for element in cursor:
         element["_id"] = str(element["_id"])

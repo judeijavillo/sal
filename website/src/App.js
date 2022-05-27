@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Navigation from "./components/Navigation"
 import { FILL_PARENT, FILL_WHITE, FILL_GRADIENT, NAVBAR_HEIGHT } from "./constants"
 import Home from "./pages/Home"
+import Posts from "./pages/Posts"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Welcome from "./pages/Welcome"
@@ -80,7 +81,12 @@ function App() {
                   auth={auth} 
                   courseId={courseId} 
                   setCourseId={setCourseId} />
-                }/>
+              }/>
+              <Route path="/posts" element={
+                <Posts
+                  auth={auth}
+                  courseId={courseId} />
+              }/>
             </Routes>
           </div>
           <Navigation 

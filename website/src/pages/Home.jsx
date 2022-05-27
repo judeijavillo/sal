@@ -36,6 +36,7 @@ export default function Home({
   )
 
   // STYLES ********************************************************************
+
   const containerStyle = {
     width: "100%",
     height: "auto",
@@ -50,6 +51,7 @@ export default function Home({
   }
 
   // HELPERS *******************************************************************
+  
   function addCourse() {
     // TODO: Implement Me
   }

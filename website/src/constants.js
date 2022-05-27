@@ -36,6 +36,9 @@ export const GRAY = "#BBBBBB"
 // The height of the navigation bar
 export const NAVBAR_HEIGHT = 75
 
+// The standard width of a sidebar
+export const SIDEBAR_WIDTH = 400
+
 // The width of the selection border
 export const SELECTION_BORDER_WIDTH = 2
 
